@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "typescript": "^4.4.2",
+    "uuidv4": "^6.2.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.1",
+    "babel-jest": "^27.1.1",
+    "jest": "^27.1.1",
+    "ts-node": "^10.2.1"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest"
+  }
+}
