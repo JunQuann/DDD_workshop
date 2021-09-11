@@ -1,17 +1,25 @@
+import { Price } from "./Price";
+
 export class Product {
   private _name: string;
+  private _price: Price;
 
-  constructor(name: string) {
+  constructor(name: string, price: Price) {
     this._name = name;
+    this._price = price;
   }
 
-  getName(): string {
+  get name(): string {
     return this._name;
+  }
+
+  get price(): Price {
+    return this._price;
   }
 
   equals(product: Product): boolean {
     if (product instanceof Product) {
-      return this._name === product.getName();
+      return this._name === product.name;
     }
     return false;
   }

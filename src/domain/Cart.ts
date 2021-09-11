@@ -14,8 +14,11 @@ export class Cart {
   }
 
   add(cartItem: CartItem): void {
+    const productPrice = cartItem.product.price.toString();
+    console.log(productPrice);
+
     const newDeletedProducts = this._deletedProducts.filter(
-      (deletedProduct) => !deletedProduct.equals(cartItem.getProduct())
+      (deletedProduct) => !deletedProduct.equals(cartItem.product)
     );
 
     this._deletedProducts = newDeletedProducts;
@@ -24,34 +27,34 @@ export class Cart {
 
   delete(cartItem: CartItem): void {
     const cartItemToDelete = this._cartItems.find((cartItemInCart) =>
-      cartItem.getProduct().equals(cartItemInCart.getProduct())
+      cartItem.product.equals(cartItemInCart.product)
     );
 
     if (cartItemToDelete) {
       const newCartItems = this._cartItems.filter(
-        (item) => !item.getProduct().equals(cartItem.getProduct())
+        (item) => !item.product.equals(cartItem.product)
       );
 
-      this._deletedProducts.push(cartItem.getProduct());
+      this._deletedProducts.push(cartItem.product);
       this._cartItems = newCartItems;
     }
   }
 
-  getId(): string {
+  get id(): string {
     return this._id;
   }
 
-  getCartItems(): CartItem[] {
+  get cartItems(): CartItem[] {
     return this._cartItems;
   }
 
-  getDeletedProducts(): Product[] {
+  get deletedProducts(): Product[] {
     return this._deletedProducts;
   }
 
   equals(cart: Cart): boolean {
     if (cart instanceof Cart) {
-      return this._id === cart.getId();
+      return this._id === cart.id;
     }
     return false;
   }
