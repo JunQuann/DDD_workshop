@@ -3,10 +3,12 @@ import { Price } from "./Price";
 export class Product {
   private _name: string;
   private _price: Price;
+  private _weightInGrams: number;
 
-  constructor(name: string, price: Price) {
+  constructor(name: string, price: Price, weightInGrams: number) {
     this._name = name;
     this._price = price;
+    this._weightInGrams = weightInGrams;
   }
 
   get name(): string {
@@ -15,6 +17,10 @@ export class Product {
 
   get price(): Price {
     return this._price;
+  }
+
+  get weightInGrams(): number {
+    return this._weightInGrams;
   }
 
   equals(product: Product): boolean {

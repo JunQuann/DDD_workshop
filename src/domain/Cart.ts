@@ -1,16 +1,19 @@
 import { uuid } from "uuidv4";
 import { CartItem } from "./CartItem";
+import { Order } from "./Order";
 import { Product } from "./Product";
 
 export class Cart {
   private _id: string;
   private _cartItems: CartItem[];
   private _deletedProducts: Product[];
+  private _checkedOut: boolean;
 
   constructor() {
     this._id = uuid();
     this._cartItems = [];
     this._deletedProducts = [];
+    this._checkedOut = false;
   }
 
   add(cartItem: CartItem): void {
@@ -40,6 +43,10 @@ export class Cart {
     }
   }
 
+  checkout(): void {
+    this._checkedOut = true;
+  }
+
   get id(): string {
     return this._id;
   }
@@ -50,6 +57,10 @@ export class Cart {
 
   get deletedProducts(): Product[] {
     return this._deletedProducts;
+  }
+
+  get checkedout(): boolean {
+    return this._checkedOut;
   }
 
   equals(cart: Cart): boolean {

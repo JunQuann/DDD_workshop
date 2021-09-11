@@ -17,6 +17,10 @@ export class Price {
     return this._amount;
   }
 
+  get currency(): Currency {
+    return this._currency;
+  }
+
   toString(): string {
     return `${this._amount} ${this._currency}`;
   }
