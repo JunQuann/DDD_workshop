@@ -10,6 +10,9 @@ export class Product {
   }
 
   equals(product: Product): boolean {
-    return this._name === product.getName();
+    if (product instanceof Product) {
+      return this._name === product.getName();
+    }
+    return false;
   }
 }

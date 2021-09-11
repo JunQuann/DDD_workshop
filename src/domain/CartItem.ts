@@ -9,7 +9,7 @@ export class CartItem {
     this._quantity = quantity;
   }
 
-  getProduct() {
+  getProduct(): Product {
     return this._product;
   }
 }

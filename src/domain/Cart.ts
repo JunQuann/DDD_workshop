@@ -13,7 +13,7 @@ export class Cart {
     this._deletedProducts = [];
   }
 
-  add(cartItem: CartItem) {
+  add(cartItem: CartItem): void {
     const newDeletedProducts = this._deletedProducts.filter(
       (deletedProduct) => !deletedProduct.equals(cartItem.getProduct())
     );
@@ -22,7 +22,7 @@ export class Cart {
     this._cartItems.push(cartItem);
   }
 
-  delete(cartItem: CartItem) {
+  delete(cartItem: CartItem): void {
     const cartItemToDelete = this._cartItems.find((cartItemInCart) =>
       cartItem.getProduct().equals(cartItemInCart.getProduct())
     );
@@ -37,19 +37,22 @@ export class Cart {
     }
   }
 
-  getId() {
+  getId(): string {
     return this._id;
   }
 
-  getCartItems() {
+  getCartItems(): CartItem[] {
     return this._cartItems;
   }
 
-  getDeletedProducts() {
+  getDeletedProducts(): Product[] {
     return this._deletedProducts;
   }
 
-  equals(cart: Cart) {
-    return this._id === cart.getId();
+  equals(cart: Cart): boolean {
+    if (cart instanceof Cart) {
+      return this._id === cart.getId();
+    }
+    return false;
   }
 }
